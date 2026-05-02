@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire d'inscription</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-eyebrow">Créez votre compte</div>
+      <h1>Formulaire d'inscription</h1>
+      <p>Remplissez toutes les sections pour finaliser votre inscription.</p>
+    </div>
+
+    <div id="form-container">
+
+      <!-- Section 1 : Informations personnelles -->
+      <fieldset>
+        <legend>
+          <span class="legend-icon">1</span>
+          Informations personnelles
+        </legend>
+        <br>
+        <div class="grid-2">
+
+          <div class="field" id="f-nom">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="nom" autocomplete="family-name" placeholder="Alami" required>
+            <span class="error-msg">Veuillez saisir votre nom.</span>
+          </div>
+
+          <div class="field" id="f-prenom">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="prenom" autocomplete="given-name" placeholder="Mohammed" required>
+            <span class="error-msg">Veuillez saisir votre prénom.</span>
+          </div>
+
+          <div class="field" id="f-email">
+            <label for="email">Adresse e-mail *</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="alami@exemple.com" required>
+            <span class="error-msg">Adresse e-mail invalide.</span>
+          </div>
+
+          <div class="field" id="f-tel">
+            <label for="tel">Téléphone (Format Français) *</label>
+            <input type="tel" id="tel" name="tel" autocomplete="tel" placeholder="06 12 34 56 78"
+              pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$" required>
+            <span class="error-msg">Format téléphone français invalide.</span>
+          </div>
+
+          <div class="field" id="f-naissance">
+            <label for="naissance">Date de naissance *</label>
+            <input type="date" id="naissance" name="naissance" autocomplete="bday" required>
+            <span class="error-msg">Vous devez avoir au moins 18 ans.</span>
+          </div>
+
+          <div class="field" id="f-pays">
+            <label for="pays">Pays *</label>
+            <select id="pays" name="pays" autocomplete="country" required>
+              <option value="">— Sélectionner —</option>
+              <option value="AF">Afghanistan</option>
+              <option value="ZA">Afrique du Sud</option>
+              <option value="AX">Ahvenanmaa</option>
+              <option value="AL">Albanie</option>
+              <option value="DZ">Algérie</option>
+              <option value="DE">Allemagne</option>
+              <option value="AD">Andorre</option>
+              <option value="AO">Angola</option>
+              <option value="AI">Anguilla</option>
+              <option value="AQ">Antarctique</option>
+              <option value="AG">Antigua-et-Barbuda</option>
+              <option value="SA">Arabie Saoudite</option>
+              <option value="AR">Argentine</option>
+              <option value="AM">Arménie</option>
+              <option value="AW">Aruba</option>
+              <option value="AU">Australie</option>
+              <option value="AT">Autriche</option>
+              <option value="AZ">Azerbaïdjan</option>
+              <option value="BS">Bahamas</option>
+              <option value="BH">Bahreïn</option>
+              <option value="BD">Bangladesh</option>
+              <option value="BB">Barbade</option>
+              <option value="BE">Belgique</option>
+              <option value="BZ">Belize</option>
+              <option value="BM">Bermudes</option>
+              <option value="BT">Bhoutan</option>
+              <option value="MM">Birmanie</option>
+              <option value="BY">Biélorussie</option>
+              <option value="BO">Bolivie</option>
+              <option value="BA">Bosnie-Herzégovine</option>
+              <option value="BW">Botswana</option>
+              <option value="BN">Brunei</option>
+              <option value="BR">Brésil</option>
+              <option value="BG">Bulgarie</option>
+              <option value="BF">Burkina Faso</option>
+              <option value="BI">Burundi</option>
+              <option value="BJ">Bénin</option>
+              <option value="KH">Cambodge</option>
+              <option value="CM">Cameroun</option>
+              <option value="CA">Canada</option>
+              <option value="CL">Chili</option>
+              <option value="CN">Chine</option>
+              <option value="CY">Chypre</option>
+              <option value="VA">Cité du Vatican</option>
+              <option value="CO">Colombie</option>
+              <option value="KM">Comores</option>
+              <option value="CG">Congo</option>
+              <option value="CD">Congo (Rép. dém.)</option>
+              <option value="KP">Corée du Nord</option>
+              <option value="KR">Corée du Sud</option>
+              <option value="CR">Costa Rica</option>
+              <option value="HR">Croatie</option>
+              <option value="CU">Cuba</option>
+              <option value="CW">Curaçao</option>
+              <option value="CI">Côte d'Ivoire</option>
+              <option value="DK">Danemark</option>
+              <option value="DJ">Djibouti</option>
+              <option value="DM">Dominique</option>
+              <option value="ES">Espagne</option>
+              <option value="EE">Estonie</option>
+              <option value="FJ">Fidji</option>
+              <option value="FI">Finlande</option>
+              <option value="FR">France</option>
+              <option value="GA">Gabon</option>
+              <option value="GM">Gambie</option>
+              <option value="GH">Ghana</option>
+              <option value="GI">Gibraltar</option>
+              <option value="GD">Grenade</option>
+              <option value="GL">Groenland</option>
+              <option value="GR">Grèce</option>
+              <option value="GP">Guadeloupe</option>
+              <option value="GU">Guam</option>
+              <option value="GT">Guatemala</option>
+              <option value="GG">Guernesey</option>
+              <option value="GN">Guinée</option>
+              <option value="GQ">Guinée équatoriale</option>
+              <option value="GW">Guinée-Bissau</option>
+              <option value="GY">Guyana</option>
+              <option value="GF">Guyane</option>
+              <option value="GE">Géorgie</option>
+              <option value="GS">Géorgie du Sud-et-les Îles Sandwich du Sud</option>
+              <option value="HT">Haïti</option>
+              <option value="HN">Honduras</option>
+              <option value="HK">Hong Kong</option>
+              <option value="HU">Hongrie</option>
+              <option value="IN">Inde</option>
+              <option value="ID">Indonésie</option>
+              <option value="IQ">Irak</option>
+              <option value="IR">Iran</option>
+              <option value="IE">Irlande</option>
+              <option value="IS">Islande</option>
+              <option value="IL">Israël</option>
+              <option value="IT">Italie</option>
+              <option value="JM">Jamaïque</option>
+              <option value="JP">Japon</option>
+              <option value="JE">Jersey</option>
+              <option value="JO">Jordanie</option>
+              <option value="KZ">Kazakhstan</option>
+              <option value="KE">Kenya</option>
+              <option value="KG">Kirghizistan</option>
+              <option value="KI">Kiribati</option>
+              <option value="XK">Kosovo</option>
+              <option value="KW">Koweït</option>
+              <option value="LA">Laos</option>
+              <option value="LS">Lesotho</option>
+              <option value="LV">Lettonie</option>
+              <option value="LB">Liban</option>
+              <option value="LR">Liberia</option>
+              <option value="LY">Libye</option>
+              <option value="LI">Liechtenstein</option>
+              <option value="LT">Lituanie</option>
+              <option value="LU">Luxembourg</option>
+              <option value="MO">Macao</option>
+              <option value="MK">Macédoine du Nord</option>
+              <option value="MG">Madagascar</option>
+              <option value="MY">Malaisie</option>
+              <option value="MW">Malawi</option>
+              <option value="MV">Maldives</option>
+              <option value="ML">Mali</option>
+              <option value="MT">Malte</option>
+              <option value="MA">Maroc</option>
+              <option value="MQ">Martinique</option>
+              <option value="MR">Mauritanie</option>
+              <option value="YT">Mayotte</option>
+              <option value="MX">Mexique</option>
+              <option value="FM">Micronésie</option>
+              <option value="MD">Moldavie</option>
+              <option value="MC">Monaco</option>
+              <option value="MN">Mongolie</option>
+              <option value="MS">Montserrat</option>
+              <option value="ME">Monténégro</option>
+              <option value="MZ">Mozambique</option>
+              <option value="NA">Namibie</option>
+              <option value="NR">Nauru</option>
+              <option value="NI">Nicaragua</option>
+              <option value="NE">Niger</option>
+              <option value="NG">Nigéria</option>
+              <option value="NU">Niue</option>
+              <option value="NO">Norvège</option>
+              <option value="NC">Nouvelle-Calédonie</option>
+              <option value="NZ">Nouvelle-Zélande</option>
+              <option value="NP">Népal</option>
+              <option value="OM">Oman</option>
+              <option value="UG">Ouganda</option>
+              <option value="UZ">Ouzbékistan</option>
+              <option value="PK">Pakistan</option>
+              <option value="PW">Palaos (Palau)</option>
+              <option value="PS">Palestine</option>
+              <option value="PA">Panama</option>
+              <option value="PG">Papouasie-Nouvelle-Guinée</option>
+              <option value="PY">Paraguay</option>
+              <option value="NL">Pays-Bas</option>
+              <option value="BQ">Pays-Bas caribéens</option>
+              <option value="PH">Philippines</option>
+              <option value="PL">Pologne</option>
+              <option value="PF">Polynésie française</option>
+              <option value="PR">Porto Rico</option>
+              <option value="PT">Portugal</option>
+              <option value="PE">Pérou</option>
+              <option value="QA">Qatar</option>
+              <option value="RO">Roumanie</option>
+              <option value="GB">Royaume-Uni</option>
+              <option value="RU">Russie</option>
+              <option value="RW">Rwanda</option>
+              <option value="CF">République centrafricaine</option>
+              <option value="DO">République dominicaine</option>
+              <option value="RE">Réunion</option>
+              <option value="EH">Sahara Occidental</option>
+              <option value="BL">Saint-Barthélemy</option>
+              <option value="KN">Saint-Christophe-et-Niévès</option>
+              <option value="SM">Saint-Marin</option>
+              <option value="MF">Saint-Martin</option>
+              <option value="SX">Saint-Martin</option>
+              <option value="PM">Saint-Pierre-et-Miquelon</option>
+              <option value="VC">Saint-Vincent-et-les-Grenadines</option>
+              <option value="SH">Sainte-Hélène, Ascension et Tristan da Cunha</option>
+              <option value="LC">Sainte-Lucie</option>
+              <option value="SV">Salvador</option>
+              <option value="WS">Samoa</option>
+              <option value="AS">Samoa américaines</option>
+              <option value="RS">Serbie</option>
+              <option value="SC">Seychelles</option>
+              <option value="SL">Sierra Leone</option>
+              <option value="SG">Singapour</option>
+              <option value="SK">Slovaquie</option>
+              <option value="SI">Slovénie</option>
+              <option value="SO">Somalie</option>
+              <option value="SD">Soudan</option>
+              <option value="SS">Soudan du Sud</option>
+              <option value="LK">Sri Lanka</option>
+              <option value="CH">Suisse</option>
+              <option value="SR">Surinam</option>
+              <option value="SE">Suède</option>
+              <option value="SJ">Svalbard et Jan Mayen</option>
+              <option value="SZ">Swaziland</option>
+              <option value="SY">Syrie</option>
+              <option value="ST">São Tomé et Príncipe</option>
+              <option value="SN">Sénégal</option>
+              <option value="TJ">Tadjikistan</option>
+              <option value="TZ">Tanzanie</option>
+              <option value="TW">Taïwan</option>
+              <option value="TD">Tchad</option>
+              <option value="CZ">Tchéquie</option>
+              <option value="TF">Terres australes et antarctiques françaises</option>
+              <option value="IO">Territoire britannique de l'océan Indien</option>
+              <option value="TH">Thaïlande</option>
+              <option value="TL">Timor oriental</option>
+              <option value="TG">Togo</option>
+              <option value="TK">Tokelau</option>
+              <option value="TO">Tonga</option>
+              <option value="TT">Trinité-et-Tobago</option>
+              <option value="TN">Tunisie</option>
+              <option value="TM">Turkménistan</option>
+              <option value="TR">Turquie</option>
+              <option value="TV">Tuvalu</option>
+              <option value="UA">Ukraine</option>
+              <option value="UY">Uruguay</option>
+              <option value="VU">Vanuatu</option>
+              <option value="VE">Venezuela</option>
+              <option value="VN">Viêt Nam</option>
+              <option value="WF">Wallis-et-Futuna</option>
+              <option value="YE">Yémen</option>
+              <option value="ZM">Zambie</option>
+              <option value="ZW">Zimbabwe</option>
+              <option value="EG">Égypte</option>
+              <option value="AE">Émirats arabes unis</option>
+              <option value="EC">Équateur</option>
+              <option value="ER">Érythrée</option>
+              <option value="US">États-Unis</option>
+              <option value="ET">Éthiopie</option>
+              <option value="BV">Île Bouvet</option>
+              <option value="CX">Île Christmas</option>
+              <option value="MU">Île Maurice</option>
+              <option value="NF">Île Norfolk</option>
+              <option value="IM">Île de Man</option>
+              <option value="KY">Îles Caïmans</option>
+              <option value="CC">Îles Cocos</option>
+              <option value="CK">Îles Cook</option>
+              <option value="FO">Îles Féroé</option>
+              <option value="HM">Îles Heard-et-MacDonald</option>
+              <option value="FK">Îles Malouines</option>
+              <option value="MP">Îles Mariannes du Nord</option>
+              <option value="MH">Îles Marshall</option>
+              <option value="PN">Îles Pitcairn</option>
+              <option value="SB">Îles Salomon</option>
+              <option value="TC">Îles Turques-et-Caïques</option>
+              <option value="VG">Îles Vierges britanniques</option>
+              <option value="VI">Îles Vierges des États-Unis</option>
+              <option value="CV">Îles du Cap-Vert</option>
+              <option value="UM">Îles mineures éloignées des États-Unis</option>
+              <option value="OTHER">Autre</option>
+            </select>
+            <span class="error-msg">Veuillez sélectionner un pays.</span>
+          </div>
+          <div class="field" id="f-pays-autre" style="display: none;">
+            <label for="pays-autre">Précisez votre pays *</label>
+            <input type="text" id="pays-autre" name="pays-autre" placeholder="Votre pays">
+            <span class="error-msg">Veuillez préciser votre pays.</span>
+          </div>
+
+
+        </div>
+
+        <div class="mt-1">
+          <div class="field" id="f-genre">
+            <label>Genre *</label>
+            <div class="radio-group" style="margin-top: 6px;">
+              <div class="radio-pill">
+                <input type="radio" name="genre" id="g-femme" value="femme" required>
+                <label for="g-femme">Femme</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" name="genre" id="g-homme" value="homme">
+                <label for="g-homme">Homme</label>
+              </div>
+            </div>
+            <span class="error-msg" id="genre-error">Veuillez sélectionner une option.</span>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Section 2 : Sécurité -->
+      <fieldset>
+        <legend>
+          <span class="legend-icon">2</span>
+          Sécurité du compte
+        </legend>
+        <br>
+        <div class="grid-2">
+
+          <div class="field" id="f-pw">
+            <label for="password">Mot de passe (Min 8 car., 1 Maj, 1 Chiffre) *</label>
+            <div class="password-wrap">
+              <input type="password" id="password" name="password" autocomplete="new-password" placeholder="••••••••"
+                pattern="^(?=.*[A-Z])(?=.*\d).{8,}$" required>
+              <button type="button" class="toggle-pw" onclick="togglePw('password', this)">👁</button>
+            </div>
+            <div class="strength-bar">
+              <div class="strength-fill" id="strength-fill"></div>
+            </div>
+            <div class="strength-label" id="strength-label">Min. 8 caractères, 1 majuscule, 1 chiffre</div>
+            <span class="error-msg">Min. 8 caractères, 1 majuscule, 1 chiffre.</span>
+          </div>
+
+          <div class="field" id="f-pw2">
+            <label for="password2">Confirmation *</label>
+            <div class="password-wrap">
+              <input type="password" id="password2" name="password2" autocomplete="new-password" placeholder="••••••••"
+                required>
+              <button type="button" class="toggle-pw" onclick="togglePw('password2', this)">👁</button>
+            </div>
+            <span class="error-msg">Les mots de passe ne correspondent pas.</span>
+          </div>
+
+        </div>
+      </fieldset>
+
+      <!-- Section 3 : Profil & Intérêts -->
+      <fieldset>
+        <legend>
+          <span class="legend-icon">3</span>
+          Profil &amp; Intérêts
+        </legend>
+        <br>
+
+        <div class="field full">
+          <label>Centres d'intérêt</label>
+          <div class="checkbox-group" style="margin-top: 6px;">
+
+            <div class="check-pill"><input type="checkbox" id="i-tech" name="interests" value="tech"><label for="i-tech">Technologie</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-sport" name="interests" value="sport"><label for="i-sport">Sport</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-art" name="interests" value="art"><label for="i-art">Arts &amp; Culture</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-voyage" name="interests" value="voyage"><label for="i-voyage">Voyage</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-cuisine" name="interests" value="cuisine"><label for="i-cuisine">Cuisine</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-musique" name="interests" value="musique"><label for="i-musique">Musique</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-science" name="interests" value="science"><label for="i-science">Sciences</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-lecture" name="interests" value="lecture"><label for="i-lecture">Lecture</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-photo" name="interests" value="photo"><label for="i-photo">Photographie</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-jeux" name="interests" value="jeux"><label for="i-jeux">Jeux Vidéo</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-animaux" name="interests" value="animaux"><label for="i-animaux">Animaux</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-mode" name="interests" value="mode"><label for="i-mode">Mode &amp; Beauté</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-nature" name="interests" value="nature"><label for="i-nature">Nature &amp; Rando</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-histoire" name="interests" value="histoire"><label for="i-histoire">Histoire</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-benevolat" name="interests" value="benevolat"><label for="i-benevolat">Bénévolat</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-bricolage" name="interests" value="bricolage"><label for="i-bricolage">Bricolage (DIY)</label></div>
+            <div class="check-pill"><input type="checkbox" id="i-autre2" name="interests" value="autre"><label for="i-autre2">Autre</label></div>
+          </div>
+        </div>
+
+        <div class="field full mt-1">
+          <label for="bio">Biographie</label>
+          <textarea id="bio" name="bio" maxlength="500" placeholder="Parlez-nous un peu de vous…"
+            autocomplete="off"></textarea>
+          <span class="bio-counter" id="bio-count">0 / 500 caractères</span>
+        </div>
+
+        <div class="mt-1">
+          <label style="margin-bottom: 8px; display: block;">Photo de profil</label>
+          <div class="photo-upload" id="photo-zone">
+            <input type="file" id="photo" name="photo" accept="image/*">
+            <div class="upload-icon">📷</div>
+            <p><strong>Cliquez pour télécharger</strong> ou glissez-déposez</p>
+            <p>PNG, JPG, WEBP · Max 5 Mo</p>
+            <div id="photo-name"></div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Section 4 : CGU -->
+      <fieldset>
+        <legend>
+          <span class="legend-icon">4</span>
+          Conditions d'utilisation
+        </legend>
+        <br>
+        <div class="field" id="f-cgu">
+          <div class="cgu-row">
+            <input type="checkbox" id="cgu" name="cgu" required>
+            <span>
+              J'ai lu et j'accepte les
+              <a href="cgu.html" target="_blank">conditions générales d'utilisation</a>
+              et la <a href="privacy.html" target="_blank">politique de confidentialité</a>.
+              Je confirme avoir au moins 18 ans.
+            </span>
+          </div>
+          <span class="error-msg">Vous devez accepter les CGU pour continuer.</span>
+        </div>
+      </fieldset>
+
+      <button type="button" class="submit-btn" id="submit-btn" onclick="submitForm()">
+        Créer mon compte
+      </button>
+
+    </div><!-- /#form-container -->
+
+    <!-- Bannière de succès -->
+    <div class="success-banner" id="success-banner">
+      <div class="check">✓</div>
+      <h2>Inscription réussie !</h2>
+      <p>Votre compte a été créé avec succès. Bienvenue parmi nous.</p>
+    </div>
+
+  </div><!-- /.wrapper -->
+
+  <script>
+    
+  /* ── Afficher champ autre pays ── */
+  document.getElementById('pays').addEventListener('change', function() {
+    const autreField = document.getElementById('f-pays-autre');
+    if (this.value === 'OTHER') {
+      autreField.style.display = 'flex';
+      document.getElementById('pays-autre').required = true;
+    } else {
+      autreField.style.display = 'none';
+      document.getElementById('pays-autre').required = false;
+    }
+  });
+
+  /* ── Afficher/masquer mot de passe ── */
+
+    function togglePw(id, btn) {
+      const el = document.getElementById(id);
+      el.type = el.type === 'password' ? 'text' : 'password';
+      btn.textContent = el.type === 'password' ? '👁' : '🙈';
+    }
+
+    /* ── Nom du fichier photo ── */
+    document.getElementById('photo').addEventListener('change', function () {
+      const name = this.files[0] ? this.files[0].name : '';
+      document.getElementById('photo-name').textContent = name ? '✓ ' + name : '';
+    });
+
+    /* ── Compteur biographie ── */
+    document.getElementById('bio').addEventListener('input', function () {
+      document.getElementById('bio-count').textContent = this.value.length + ' / 500 caractères';
+    });
+
+    /* ── Indicateur de force du mot de passe ── */
+    document.getElementById('password').addEventListener('input', function () {
+      const v = this.value;
+      const fill = document.getElementById('strength-fill');
+      const label = document.getElementById('strength-label');
+      let score = 0;
+      if (v.length >= 8) score++;
+      if (/[A-Z]/.test(v)) score++;
+      if (/\d/.test(v)) score++;
+      if (/[^A-Za-z0-9]/.test(v)) score++;
+      const colors = ['#e24b4a', '#ef9f27', '#63991a', '#2d8a6a'];
+      const labels = ['Très faible', 'Faible', 'Moyen', 'Fort'];
+      fill.style.width = (score * 25) + '%';
+      fill.style.background = score > 0 ? colors[score - 1] : 'transparent';
+      label.textContent = score > 0 ? labels[score - 1] : 'Min. 8 caractères, 1 majuscule, 1 chiffre';
+      label.style.color = score > 0 ? colors[score - 1] : 'var(--muted)';
+    });
+
+    /* ── Validation d'un champ ── */
+    function validateField(fieldId, inputEl, checkFn) {
+      const wrapper = document.getElementById(fieldId);
+      if (!wrapper) return checkFn(inputEl);
+      const ok = checkFn(inputEl);
+      wrapper.classList.toggle('has-error', !ok);
+      wrapper.classList.toggle('is-valid', ok);
+      return ok;
+    }
+
+    /* ── Vérification âge ≥ 18 ans ── */
+    function isAdult(dateStr) {
+      if (!dateStr) return false;
+      const dob = new Date(dateStr);
+      const now = new Date();
+      let age = now.getFullYear() - dob.getFullYear();
+      const m = now.getMonth() - dob.getMonth();
+      if (m < 0 || (m === 0 && now.getDate() < dob.getDate())) age--;
+      return age >= 18;
+    }
+
+    /* ── Soumission du formulaire ── */
+    function submitForm() {
+      let valid = true;
+      let firstError = null;
+
+      const checks = [
+        { id: 'f-nom', el: document.getElementById('nom'), fn: el => el.value.trim().length >= 2 },
+        { id: 'f-prenom', el: document.getElementById('prenom'), fn: el => el.value.trim().length >= 2 },
+        { id: 'f-email', el: document.getElementById('email'), fn: el => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value) },
+        { id: 'f-tel', el: document.getElementById('tel'), fn: el => /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/.test(el.value) },
+        { id: 'f-naissance', el: document.getElementById('naissance'), fn: el => isAdult(el.value) },
+        
+      { id: 'f-pays',      el: document.getElementById('pays'),      fn: el => el.value !== '' },
+      { id: 'f-pays-autre',el: document.getElementById('pays-autre'),fn: el => document.getElementById('pays').value !== 'OTHER' || el.value.trim().length > 0 },
+
+        { id: 'f-pw', el: document.getElementById('password'), fn: el => /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(el.value) },
+        { id: 'f-pw2', el: document.getElementById('password2'), fn: el => el.value === document.getElementById('password').value && el.value.length > 0 },
+        { id: 'f-cgu', el: document.getElementById('cgu'), fn: el => el.checked },
+      ];
+
+      checks.forEach(c => {
+        const ok = validateField(c.id, c.el, c.fn);
+        if (!ok) { valid = false; if (!firstError) firstError = c.el; }
+      });
+
+      /* Validation genre (radio) */
+      const genre = document.querySelector('input[name="genre"]:checked');
+      const genreError = document.getElementById('genre-error');
+      if (!genre) {
+        valid = false;
+        genreError.style.display = 'block';
+        if (!firstError) firstError = genreError;
+      } else {
+        genreError.style.display = 'none';
+      }
+
+      if (!valid) {
+        if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      /* Animation de chargement */
+      const btn = document.getElementById('submit-btn');
+      btn.classList.add('loading');
+
+      setTimeout(() => {
+        btn.classList.remove('loading');
+        document.getElementById('form-container').style.display = 'none';
+        const banner = document.getElementById('success-banner');
+        banner.style.display = 'block';
+        banner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 1600);
+    }
+
+    /* ── Validation au blur (sortie de champ) ── */
+    const blurMap = {
+      nom: { fid: 'f-nom', fn: el => el.value.trim().length >= 2 },
+      prenom: { fid: 'f-prenom', fn: el => el.value.trim().length >= 2 },
+      email: { fid: 'f-email', fn: el => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value) },
+      tel: { fid: 'f-tel', fn: el => /^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/.test(el.value) },
+      naissance: { fid: 'f-naissance', fn: el => isAdult(el.value) },
+      pays: { fid: 'f-pays', fn: el => el.value !== '' },
+      password: { fid: 'f-pw', fn: el => /^(?=.*[A-Z])(?=.*\d).{8,}$/.test(el.value) },
+      password2: { fid: 'f-pw2', fn: el => el.value === document.getElementById('password').value && el.value.length > 0 },
+      cgu: { fid: 'f-cgu', fn: el => el.checked },
+    };
+
+    Object.keys(blurMap).forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('blur', () => {
+        validateField(blurMap[id].fid, el, blurMap[id].fn);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
