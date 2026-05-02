@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2 : Box Model</title>
+    <link rel="stylesheet" href="exercice2.css">
+</head>
+
+<body>
+    <h1>Exercice 2 : Box Model</h1>
+
+    <!-- ===== 2.1 : Comprendre le Box Model ===== -->
+    <section class="demo">
+        <h2>2.1 – Visualisation du Box Model</h2>
+
+        <!-- box-sizing: content-box (défaut) -->
+        <div class="boite content-box">
+            <strong>content-box</strong><br>
+            width: 300px, padding: 20px, border: 5px<br>
+            → Largeur totale visible = 300 + 20×2 + 5×2 = <strong>350px</strong>
+        </div>
+
+        <!-- box-sizing: border-box -->
+        <div class="boite border-box">
+            <strong>border-box</strong><br>
+            width: 300px, padding: 20px, border: 5px<br>
+            → Largeur totale visible = <strong>300px</strong> (tout inclus)
+        </div>
+    </section>
+
+    <!-- ===== Réponses théoriques ===== -->
+    <section class="reponses">
+        <h2>Réponses :</h2>
+        <ol>
+            <li>
+                <strong>content-box :</strong> largeur totale = 300 + (20×2) + (5×2) = <strong>350px</strong>
+            </li>
+            <li>
+                <strong>border-box :</strong> largeur totale = <strong>300px</strong> (padding et border sont inclus)
+            </li>
+            <li>
+                <strong>Reset CSS universel :</strong>
+                <pre>*, *::before, *::after {
+    box-sizing: border-box;
+}</pre>
+            </li>
+        </ol>
+    </section>
+
+    <!-- ===== 2.2 : Centrer un élément ===== -->
+    <section class="demo">
+        <h2>2.2 – Centrage horizontal</h2>
+        <p>L'élément ci-dessous est centré horizontalement avec <code>margin: 0 auto</code> :</p>
+        <div class="boite-centree">
+            Centré horizontalement
+        </div>
+    </section>
+
+    <section class="demo">
+        <h2>2.2 – Centrage vertical ET horizontal (Flexbox)</h2>
+        <div class="conteneur-centre">
+            <div class="boite-double-centre">
+                Centré verticalement et horizontalement !
+            </div>
+        </div>
+    </section>
+
+    <a href="index.html">← Retour à l'index</a>
+</body>
+
+</html>

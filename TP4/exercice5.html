@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 5 : Responsive Design</title>
+    <link rel="stylesheet" href="exercice5.css">
+</head>
+
+<body>
+    <h1>Exercice 5 : Responsive Design (Mobile First)</h1>
+
+    <div class="container">
+
+        <!-- Navigation -->
+        <nav class="nav-menu">
+            <a href="#">Accueil</a>
+            <a href="#">Services</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <!-- Contenu principal + sidebar -->
+        <div class="content">
+            <div class="main-content">
+                <h2>Contenu principal</h2>
+                <p>
+                    Ceci est le contenu principal de la page. Sur mobile, il occupe toute la largeur.
+                    Sur tablette et desktop, il est affiché côte à côte avec la sidebar.
+                </p>
+                <p>
+                    Redimensionnez la fenêtre du navigateur pour voir le comportement responsive !
+                </p>
+            </div>
+            <aside class="sidebar">
+                <h3>Sidebar</h3>
+                <p>Contenu secondaire visible à partir de la tablette.</p>
+                <ul>
+                    <li>Lien 1</li>
+                    <li>Lien 2</li>
+                    <li>Lien 3</li>
+                </ul>
+            </aside>
+        </div>
+
+    </div>
+
+    <!-- Indicateur de breakpoint (astuce de débogage) -->
+    <div class="breakpoint-indicator">
+        <span class="mobile-only">📱 Mobile (&lt; 768px)</span>
+        <span class="tablet-only">📟 Tablette (768px – 1024px)</span>
+        <span class="desktop-only">🖥️ Desktop (&gt; 1024px)</span>
+    </div>
+
+    <a href="index.html">← Retour à l'index</a>
+</body>
+
+</html>

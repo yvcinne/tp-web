@@ -1,0 +1,231 @@
+/* ============================================
+   Exercice 7 : Transitions et animations
+   ============================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    color: #333;
+}
+
+/* ============================================
+   7.1 – Boutons avec transitions
+   la propriété 'transition' permet d'animer
+   le passage d'un état à l'autre (ex: :hover)
+   ============================================ */
+
+/* Bouton principal animé */
+.btn-anime {
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+
+    /* transition : propriété | durée | timing */
+    transition: background-color 0.3s ease,
+        transform 0.2s ease,
+        box-shadow 0.3s ease;
+}
+
+.btn-anime:hover {
+    background-color: #0056b3;
+    /* couleur change */
+    transform: translateY(-3px);
+    /* monte légèrement */
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    /* ombre */
+}
+
+.btn-anime:active {
+    transform: translateY(0);
+    /* revient à sa position au clic */
+    box-shadow: none;
+}
+
+/* Bouton outline */
+.btn-outline {
+    padding: 12px 30px;
+    background-color: transparent;
+    color: #007bff;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Bouton qui grandit */
+.btn-grow {
+    padding: 12px 30px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.2s ease;
+}
+
+.btn-grow:hover {
+    transform: scale(1.15);
+    /* grossit de 15% */
+}
+
+/* ============================================
+   7.2 – Animations avec @keyframes
+   ============================================ */
+
+/* ----- Spinner tournant ----- */
+
+/* 1. Définition de l'animation avec @keyframes */
+@keyframes tourner {
+    from {
+        transform: rotate(0deg);
+        /* départ : 0° */
+    }
+
+    to {
+        transform: rotate(360deg);
+        /* arrivée : 360° = tour complet */
+    }
+}
+
+/* 2. Utilisation de l'animation sur l'élément */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #ddd;
+    /* cercle gris */
+    border-top-color: #007bff;
+    /* un côté bleu */
+    border-radius: 50%;
+    /* rond */
+    display: inline-block;
+    margin: 20px;
+
+    /* animation: nom | durée | timing | répétition */
+    animation: tourner 1s linear infinite;
+}
+
+/* ----- Spinner avec 3 points ----- */
+
+@keyframes rebondir {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+        /* disparu */
+        opacity: 0;
+    }
+
+    40% {
+        transform: scale(1);
+        /* pleine taille */
+        opacity: 1;
+    }
+}
+
+.dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 20px;
+}
+
+.dot {
+    width: 16px;
+    height: 16px;
+    background-color: #007bff;
+    border-radius: 50%;
+    animation: rebondir 1.4s ease-in-out infinite;
+}
+
+/* Décalage d'animation pour chaque point */
+.dot:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* ----- Barre de progression ----- */
+
+@keyframes remplir {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 90%;
+    }
+}
+
+.progress-bar {
+    width: 100%;
+    max-width: 400px;
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    border-radius: 6px;
+    animation: remplir 2s ease-in-out infinite alternate;
+}
+
+/* ============================================
+   Styles généraux
+   ============================================ */
+
+.demo {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+code {
+    background: #eef;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #c00;
+}
+
+a[href="index.html"] {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}

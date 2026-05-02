@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 8 : Quiz de révision</title>
+    <link rel="stylesheet" href="exercice8.css">
+</head>
+
+<body>
+    <h1>Exercice 8 : Quiz de révision CSS3</h1>
+
+    <form id="quiz-form">
+
+        <!-- Question 1 -->
+        <div class="question" id="q1">
+            <h3>1. Quel sélecteur a la spécificité la plus haute ?</h3>
+            <label class="choix">
+                <input type="radio" name="q1" value="a">
+                a) <code>.header .nav a</code>
+            </label>
+            <label class="choix">
+                <input type="radio" name="q1" value="b">
+                b) <code>#header a</code> ✅
+            </label>
+            <label class="choix">
+                <input type="radio" name="q1" value="c">
+                c) <code>header nav a</code>
+            </label>
+            <label class="choix">
+                <input type="radio" name="q1" value="d">
+                d) <code>a.active</code>
+            </label>
+            <p class="explication">
+                <strong>Réponse correcte : b) <code>#header a</code></strong><br>
+                Un ID (#) vaut 1,0,0 → (1,0,1) au total.<br>
+                a) <code>.header .nav a</code> = (0,2,1) — b) <code>#header a</code> = (1,0,1)<br>
+                c) <code>header nav a</code> = (0,0,3) — d) <code>a.active</code> = (0,1,1)
+            </p>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question" id="q2">
+            <h3>2. Avec <code>box-sizing: border-box</code>, un élément avec <code>width: 200px</code> et
+                <code>padding: 20px</code> a une largeur totale de :</h3>
+            <label class="choix">
+                <input type="radio" name="q2" value="a">
+                a) 240px
+            </label>
+            <label class="choix">
+                <input type="radio" name="q2" value="b">
+                b) 200px ✅
+            </label>
+            <label class="choix">
+                <input type="radio" name="q2" value="c">
+                c) 220px
+            </label>
+            <label class="choix">
+                <input type="radio" name="q2" value="d">
+                d) 160px
+            </label>
+            <p class="explication">
+                <strong>Réponse correcte : b) 200px</strong><br>
+                Avec <code>border-box</code>, le padding est INCLUS dans la width déclarée.
+                La largeur totale visible = 200px. Le contenu interne fait 200 - 20×2 = 160px.
+            </p>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question" id="q3">
+            <h3>3. Pour centrer un élément verticalement et horizontalement avec Flexbox :</h3>
+            <label class="choix">
+                <input type="radio" name="q3" value="a">
+                a) <code>justify-content: center</code>
+            </label>
+            <label class="choix">
+                <input type="radio" name="q3" value="b">
+                b) <code>align-items: center</code>
+            </label>
+            <label class="choix">
+                <input type="radio" name="q3" value="c">
+                c) <code>justify-content: center</code> ET <code>align-items: center</code> ✅
+            </label>
+            <label class="choix">
+                <input type="radio" name="q3" value="d">
+                d) <code>text-align: center</code>
+            </label>
+            <p class="explication">
+                <strong>Réponse correcte : c)</strong><br>
+                <code>justify-content: center</code> = centrage sur l'axe principal (horizontal par défaut)<br>
+                <code>align-items: center</code> = centrage sur l'axe secondaire (vertical par défaut)<br>
+                Les deux ensemble = centrage dans les deux directions.
+            </p>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question" id="q4">
+            <h3>4. La valeur <code>1fr</code> en CSS Grid signifie :</h3>
+            <label class="choix">
+                <input type="radio" name="q4" value="a">
+                a) 1 pixel
+            </label>
+            <label class="choix">
+                <input type="radio" name="q4" value="b">
+                b) 1 fraction de l'espace disponible ✅
+            </label>
+            <label class="choix">
+                <input type="radio" name="q4" value="c">
+                c) 1 pourcentage
+            </label>
+            <label class="choix">
+                <input type="radio" name="q4" value="d">
+                d) 1 rem
+            </label>
+            <p class="explication">
+                <strong>Réponse correcte : b)</strong><br>
+                <code>fr</code> = fraction. <code>1fr 2fr</code> = l'espace est divisé en 3 parts : la 1ère colonne en
+                prend 1, la 2ème en prend 2.
+            </p>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="question" id="q5">
+            <h3>5. L'approche "Mobile First" utilise :</h3>
+            <label class="choix">
+                <input type="radio" name="q5" value="a">
+                a) <code>max-width</code> dans les media queries
+            </label>
+            <label class="choix">
+                <input type="radio" name="q5" value="b">
+                b) <code>min-width</code> dans les media queries ✅
+            </label>
+            <label class="choix">
+                <input type="radio" name="q5" value="c">
+                c) <code>device-width</code>
+            </label>
+            <label class="choix">
+                <input type="radio" name="q5" value="d">
+                d) <code>orientation</code>
+            </label>
+            <p class="explication">
+                <strong>Réponse correcte : b) <code>min-width</code></strong><br>
+                Mobile First = on écrit d'abord le CSS pour mobile (sans media query),<br>
+                puis on utilise <code>@media (min-width: 768px)</code> pour ajouter les styles tablette/desktop.
+            </p>
+        </div>
+
+        <button type="button" class="btn-verify" onclick="verifierQuiz()">
+            ✅ Vérifier mes réponses
+        </button>
+
+    </form>
+
+    <div id="resultat" class="resultat" style="display:none;"></div>
+
+    <script>
+        // Réponses correctes
+        const reponses = { q1: 'b', q2: 'b', q3: 'c', q4: 'b', q5: 'b' };
+
+        function verifierQuiz() {
+            let score = 0;
+            const total = Object.keys(reponses).length;
+
+            for (let nom in reponses) {
+                const question = document.getElementById(nom);
+                const choisi = document.querySelector(`input[name="${nom}"]:checked`);
+
+                // Réinitialiser les styles
+                question.classList.remove('correcte', 'incorrecte');
+
+                if (choisi) {
+                    if (choisi.value === reponses[nom]) {
+                        score++;
+                        question.classList.add('correcte');
+                    } else {
+                        question.classList.add('incorrecte');
+                    }
+                } else {
+                    question.classList.add('incorrecte');
+                }
+
+                // Afficher l'explication
+                question.querySelector('.explication').style.display = 'block';
+            }
+
+            const resultatDiv = document.getElementById('resultat');
+            resultatDiv.style.display = 'block';
+            resultatDiv.textContent = `Votre score : ${score} / ${total}`;
+            resultatDiv.className = 'resultat ' + (score === total ? 'parfait' : score >= 3 ? 'bien' : 'a-reviser');
+        }
+    </script>
+
+    <a href="index.html">← Retour à l'index</a>
+</body>
+
+</html>

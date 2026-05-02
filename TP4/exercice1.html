@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 1 : Sélecteurs et spécificité</title>
+    <link rel="stylesheet" href="exercice1.css">
+</head>
+
+<body>
+    <h1>Exercice 1 : Sélecteurs et spécificité</h1>
+
+    <!-- ===== HTML de base ===== -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="/" class="active">Accueil</a></li>
+            <li><a href="/about">À propos</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article class="post featured">
+            <h2>Premier article</h2>
+            <p>Contenu du premier article.</p>
+        </article>
+        <article class="post">
+            <h2>Deuxième article</h2>
+            <p>Contenu du deuxième article.</p>
+        </article>
+    </main>
+
+    <!-- ===== Réponses théoriques ===== -->
+    <section class="reponses">
+        <h2>Réponses : 1.1 Sélecteurs</h2>
+        <ol>
+            <li><strong>Tous les liens dans la nav :</strong> <code>.main-nav a</code></li>
+            <li><strong>Lien actif :</strong> <code>.main-nav a.active</code></li>
+            <li><strong>Article featured :</strong> <code>article.featured</code></li>
+            <li><strong>Premier paragraphe de chaque article :</strong> <code>article p:first-of-type</code></li>
+            <li><strong>Éléments li pairs :</strong> <code>li:nth-child(even)</code></li>
+        </ol>
+
+        <h2>Réponses : 1.2 Spécificité</h2>
+        <ol>
+            <li>
+                <strong>Classement croissant :</strong><br>
+                <code>p</code> (0,0,1) → <code>.text</code> (0,1,0) → <code>p.text</code> (0,1,1)
+                → <code>#main</code> (1,0,0) → <code>#main .text p</code> (1,1,1)
+            </li>
+            <li><strong>Même spécificité :</strong> La règle déclarée en dernier dans le CSS gagne (ordre de cascade).
+            </li>
+            <li><strong>Pourquoi éviter !important :</strong> Il casse la cascade naturelle du CSS, rend le code
+                difficile à déboguer et à maintenir.</li>
+        </ol>
+    </section>
+
+    <a href="index.html">← Retour à l'index</a>
+</body>
+
+</html>

@@ -1,0 +1,196 @@
+/* ============================================
+   Exercice 5 : Responsive Design (Mobile First)
+   ============================================
+   Mobile First = on commence par le CSS mobile,
+   puis on ajoute des media queries pour les
+   grands écrans avec min-width.
+   ============================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+    color: #333;
+}
+
+/* ============================================
+   BASE MOBILE (styles par défaut, sans media query)
+   Ces styles s'appliquent à TOUS les écrans,
+   et sont ensuite surchargés sur les grands écrans.
+   ============================================ */
+
+.container {
+    width: 100%;
+    /* pleine largeur sur mobile */
+    padding: 15px;
+    /* petite marge interne */
+}
+
+/* Navigation : verticale sur mobile */
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    /* liens empilés verticalement */
+    gap: 5px;
+    background: #333;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.nav-menu a:hover {
+    background: #007bff;
+}
+
+/* Contenu : bloc simple sur mobile */
+.content {
+    display: block;
+    /* pas de flexbox : contenu et sidebar empilés */
+}
+
+/* Sidebar : cachée sur mobile */
+.sidebar {
+    display: none;
+    /* cachée sur mobile */
+}
+
+.main-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   TABLETTE (min-width: 768px)
+   ============================================ */
+@media (min-width: 768px) {
+
+    .container {
+        max-width: 960px;
+        margin: 20px auto;
+        /* centré sur tablette */
+        padding: 20px;
+    }
+
+    /* Navigation : horizontale sur tablette */
+    .nav-menu {
+        flex-direction: row;
+        /* liens côte à côte */
+        justify-content: center;
+        gap: 10px;
+    }
+
+    /* Contenu : flexbox row sur tablette */
+    .content {
+        display: flex;
+        gap: 20px;
+    }
+
+    /* Sidebar : visible à partir de la tablette */
+    .sidebar {
+        display: block;
+        /* affichée */
+        width: 200px;
+        /* largeur fixe */
+        flex-shrink: 0;
+        /* ne rétrécit pas */
+        background: #6c757d;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+    }
+
+    .sidebar h3 {
+        margin-top: 0;
+        color: #fff;
+    }
+
+    .main-content {
+        flex: 1;
+        /* prend le reste de l'espace */
+    }
+}
+
+/* ============================================
+   DESKTOP (min-width: 1024px)
+   ============================================ */
+@media (min-width: 1024px) {
+
+    .container {
+        max-width: 1200px;
+    }
+
+    /* Nav alignée à gauche sur desktop */
+    .nav-menu {
+        justify-content: flex-start;
+        gap: 20px;
+    }
+
+    /* Sidebar plus large sur desktop */
+    .sidebar {
+        width: 280px;
+    }
+}
+
+/* ============================================
+   Indicateur de breakpoint (outil visuel)
+   ============================================ */
+
+.breakpoint-indicator {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.tablet-only,
+.desktop-only {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .mobile-only {
+        display: none;
+    }
+
+    .tablet-only {
+        display: inline;
+    }
+}
+
+@media (min-width: 1024px) {
+    .tablet-only {
+        display: none;
+    }
+
+    .desktop-only {
+        display: inline;
+    }
+}
+
+a[href="index.html"] {
+    display: block;
+    margin: 20px 15px;
+    color: #007bff;
+    text-decoration: none;
+}

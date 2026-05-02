@@ -1,0 +1,134 @@
+/* ============================================
+   Exercice 3 : Flexbox
+   ============================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    color: #333;
+}
+
+/* ============================================
+   3.1 – Barre de navigation avec Flexbox
+   ============================================ */
+
+.navbar {
+    display: flex;
+    /* active Flexbox */
+    justify-content: space-between;
+    /* logo à gauche, liens à droite */
+    align-items: center;
+    /* centrage vertical */
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* La liste de liens */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    /* les liens côte à côte */
+    gap: 20px;
+    /* espace entre chaque lien */
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    background-color: #007bff;
+}
+
+/* ============================================
+   3.2 – Cartes de même hauteur
+   ============================================ */
+
+.cards {
+    display: flex;
+    /* cartes côte à côte */
+    gap: 20px;
+    /* espace entre les cartes */
+    margin-top: 15px;
+}
+
+.card {
+    flex: 1;
+    /* chaque carte prend une part égale */
+    display: flex;
+    /* Flexbox DANS la carte */
+    flex-direction: column;
+    /* contenu empilé verticalement */
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+/* Le paragraphe prend tout l'espace disponible */
+/* Cela pousse le bouton vers le bas */
+.card p {
+    flex: 1;
+    /* ← astuce pour pousser le bouton en bas */
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.card-link:hover {
+    background-color: #0056b3;
+}
+
+/* ============================================
+   Styles généraux
+   ============================================ */
+
+.demo {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+a[href="index.html"] {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+}

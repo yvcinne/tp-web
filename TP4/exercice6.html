@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 6 : Variables CSS et thèmes</title>
+    <link rel="stylesheet" href="exercice6.css">
+</head>
+
+<body>
+
+    <!-- Bouton mode sombre (carré arrondi) -->
+    <button id="theme-toggle" title="Basculer le thème" onclick="toggleTheme()">🌙</button>
+
+    <h1>Exercice 6 : Variables CSS et thèmes</h1>
+
+    <!-- Carte 1 : démo visuelle -->
+    <div class="card">
+        <h2>Carte d'exemple</h2>
+        <p>
+            Ce texte utilise des <strong>variables CSS</strong> pour ses couleurs,
+            espacements et tailles de police. Cliquez 🌙 pour basculer le thème !
+        </p>
+        <button class="btn-primary">Bouton principal</button>
+        <button class="btn-secondary">Bouton secondaire</button>
+    </div>
+
+    <!-- Carte 2 : système de variables enrichi -->
+    <div class="card">
+        <h2>Système de variables CSS complet</h2>
+        <p>Les variables sont regroupées par catégorie :</p>
+        <pre>/* ── Couleurs ── */
+--color-bg        : #f9f9f9;
+--color-surface   : #ffffff;
+--color-text      : #222222;
+--color-primary   : #007bff;
+--color-secondary : #6c757d;
+
+/* ── Typographie ── */
+--font-base  : 16px;
+--font-lg    : 20px;
+--font-sm    : 13px;
+--font-title : 2rem;
+
+/* ── Espacement ── */
+--space-sm : 8px;
+--space-md : 16px;
+--space-lg : 32px;
+
+/* ── Apparence ── */
+--radius : 10px;
+--shadow : 0 4px 12px rgba(0,0,0,0.08);</pre>
+    </div>
+
+    <!-- Carte 3 : exemple d'utilisation -->
+    <div class="card">
+        <h2>Utilisation avec <code>var()</code></h2>
+        <pre>.card {
+    background : var(--color-surface);
+    padding    : var(--space-md);
+    border-radius : var(--radius);
+    font-size  : var(--font-base);
+    box-shadow : var(--shadow);
+}
+
+h1 {
+    font-size : var(--font-title);
+    color     : var(--color-primary);
+}</pre>
+        <p>En mode sombre, on <strong>surcharge</strong> les variables :</p>
+        <pre>[data-theme="dark"] {
+    --color-bg      : #0f1117;
+    --color-surface : #1a1d27;
+    --color-text    : #e0e0e0;
+    --color-primary : #4da6ff;
+}</pre>
+    </div>
+
+    <a href="index.html">← Retour à l'index</a>
+
+    <script>
+        const html = document.documentElement;
+        const btn = document.getElementById('theme-toggle');
+
+        // Restaurer thème sauvegardé
+        const saved = localStorage.getItem('theme-ex6') || 'light';
+        setTheme(saved);
+
+        function setTheme(t) {
+            html.setAttribute('data-theme', t);
+            btn.textContent = t === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('theme-ex6', t);
+        }
+
+        function toggleTheme() {
+            setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        }
+    </script>
+
+</body>
+
+</html>

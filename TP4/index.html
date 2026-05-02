@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP CSS3 - Index</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef0f5;
+            min-height: 100vh;
+        }
+
+        /* ── Header sombre ── */
+        .site-header {
+            background: #1e2a3a;
+            color: white;
+            text-align: center;
+            padding: 28px 20px;
+        }
+
+        .site-header h1 {
+            font-size: 1.6rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        /* ── Conteneur principal ── */
+        .container {
+            max-width: 820px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* ── Sous-titre ── */
+        .section-title {
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #1e2a3a;
+            margin-bottom: 24px;
+        }
+
+        /* ── Grille de cartes ── */
+        .tp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        /* ── Carte TP ── */
+        .tp-card {
+            background: white;
+            border: 1px solid #dce1ea;
+            border-radius: 10px;
+            padding: 24px 16px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #1e2a3a;
+            transition: box-shadow 0.2s, transform 0.2s;
+            display: block;
+        }
+
+        .tp-card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
+        }
+
+        /* Numéro en grand (gris clair) */
+        .tp-num {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #b0bac8;
+            display: block;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        /* Titre de l'exercice */
+        .tp-label {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #1e2a3a;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Sous-titre optionnel */
+        .tp-sub {
+            font-size: 0.75rem;
+            color: #7a8a9a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1>TP CSS3 – Travaux Pratiques</h1>
+    </header>
+
+    <main class="container">
+        <p class="section-title">Liste des Exercices</p>
+
+        <div class="tp-grid">
+            <a class="tp-card" href="exercice1.html">
+                <span class="tp-num">01</span>
+                <span class="tp-label">Exercice 1</span>
+                <span class="tp-sub">Sélecteurs</span>
+            </a>
+            <a class="tp-card" href="exercice2.html">
+                <span class="tp-num">02</span>
+                <span class="tp-label">Exercice 2</span>
+                <span class="tp-sub">Box Model</span>
+            </a>
+            <a class="tp-card" href="exercice3.html">
+                <span class="tp-num">03</span>
+                <span class="tp-label">Exercice 3</span>
+                <span class="tp-sub">Flexbox</span>
+            </a>
+            <a class="tp-card" href="exercice4.html">
+                <span class="tp-num">04</span>
+                <span class="tp-label">Exercice 4</span>
+                <span class="tp-sub">CSS Grid</span>
+            </a>
+            <a class="tp-card" href="exercice5.html">
+                <span class="tp-num">05</span>
+                <span class="tp-label">Exercice 5</span>
+                <span class="tp-sub">Responsive</span>
+            </a>
+            <a class="tp-card" href="exercice6.html">
+                <span class="tp-num">06</span>
+                <span class="tp-label">Exercice 6</span>
+                <span class="tp-sub">Variables CSS</span>
+            </a>
+            <a class="tp-card" href="exercice7.html">
+                <span class="tp-num">07</span>
+                <span class="tp-label">Exercice 7</span>
+                <span class="tp-sub">Animations</span>
+            </a>
+            <a class="tp-card" href="exercice8.html">
+                <span class="tp-num">08</span>
+                <span class="tp-label">Exercice 8</span>
+                <span class="tp-sub">Quiz</span>
+            </a>
+        </div>
+    </main>
+
+</body>
+
+</html>
