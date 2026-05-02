@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client HTTP Minimaliste</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 24px;
+      color: #222;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .app {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    select {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #888;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: monospace;
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button.send {
+      padding: 8px 18px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: white;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button.send:hover { background: #f0f0f0; }
+
+    button.add {
+      width: 34px;
+      height: 34px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    button.add:hover { background: #f0f0f0; }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 4px 0;
+    }
+
+    #headers-list {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .header-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-family: monospace;
+    }
+
+    .header-tag span {
+      cursor: pointer;
+      font-size: 16px;
+      color: #888;
+    }
+
+    #response-section { display: none; flex-direction: column; gap: 8px; }
+
+    #status-line { font-size: 14px; font-weight: bold; }
+    .status-ok  { color: #1a9e75; }
+    .status-err { color: #e24b4a; }
+
+    .section-title {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 2px;
+    }
+
+    #headers-area {
+      font-family: monospace;
+      font-size: 11px;
+      color: #555;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fafafa;
+      white-space: pre-wrap;
+    }
+
+    #response-area {
+      font-family: monospace;
+      font-size: 13px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fafafa;
+      white-space: pre-wrap;
+      word-break: break-all;
+      min-height: 120px;
+    }
+
+    #response-area-empty #response-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Client HTTP Minimaliste</h1>
+
+  <div class="app">
+
+    <!-- Ligne 1 : Méthode + URL + Bouton -->
+    <div class="row">
+      <select id="method">
+        <option>GET</option>
+        <option>POST</option>
+        <option>PUT</option>
+        <option>DELETE</option>
+        <option>PATCH</option>
+      </select>
+      <input type="text" id="url" placeholder="https://jsonplaceholder.typicode.com/posts/1" />
+      <button class="send" onclick="sendRequest()">Envoyer</button>
+    </div>
+
+    <!-- Ligne 2 : Headers -->
+    <div class="row">
+      <input type="text" id="header-key"   placeholder="Header key"   style="flex:1;" />
+      <input type="text" id="header-value" placeholder="Header value" style="flex:2;" />
+      <button class="add" onclick="addHeader()" title="Ajouter header">+</button>
+    </div>
+
+    <!-- Liste des headers ajoutés -->
+    <div id="headers-list"></div>
+
+    <!-- Body -->
+    <textarea id="body" placeholder="Body (JSON, texte...)"></textarea>
+
+    <hr />
+
+    <!-- Zone vide avant la réponse -->
+    <div id="response-area-empty">
+      <div id="response-area">Response body</div>
+    </div>
+
+    <!-- Zone de réponse -->
+    <div id="response-section">
+      <div id="status-line"></div>
+      <div class="section-title">Headers de la réponse</div>
+      <div id="headers-area"></div>
+      <div class="section-title" id="response-body-title">Response body</div>
+      <div id="response-area"></div>
+    </div>
+
+  </div>
+
+  <script>
+    // Stocke les headers ajoutés par l'utilisateur
+    let extraHeaders = {};
+
+    // Ajoute un header à la liste
+    function addHeader() {
+      const key = document.getElementById('header-key').value.trim();
+      const val = document.getElementById('header-value').value.trim();
+      if (!key) return;
+
+      extraHeaders[key] = val;
+
+      // Vide les champs
+      document.getElementById('header-key').value = '';
+      document.getElementById('header-value').value = '';
+
+      afficherHeaders();
+    }
+
+    // Affiche les headers dans l'interface
+    function afficherHeaders() {
+      const list = document.getElementById('headers-list');
+      list.innerHTML = '';
+
+      const entries = Object.entries(extraHeaders);
+      if (entries.length === 0) {
+        list.style.display = 'none';
+        return;
+      }
+
+      list.style.display = 'flex';
+      entries.forEach(([k, v]) => {
+        const div = document.createElement('div');
+        div.className = 'header-tag';
+        div.innerHTML = `${k}: ${v} <span onclick="supprimerHeader('${k}')">×</span>`;
+        list.appendChild(div);
+      });
+    }
+
+    // Supprime un header
+    function supprimerHeader(key) {
+      delete extraHeaders[key];
+      afficherHeaders();
+    }
+
+    // Envoie la requête HTTP
+    async function sendRequest() {
+      const url    = document.getElementById('url').value.trim();
+      const method = document.getElementById('method').value;
+      const body   = document.getElementById('body').value.trim();
+      const btn    = document.querySelector('button.send');
+
+      if (!url) {
+        alert('Veuillez entrer une URL');
+        return;
+      }
+
+      // Indique que c'est en cours
+      btn.textContent = '...';
+      btn.disabled = true;
+
+      document.getElementById('response-section').style.display = 'none';
+      document.getElementById('response-area-empty').style.display = 'block';
+      document.getElementById('response-area-empty').querySelector('#response-area').textContent = 'Envoi en cours...';
+
+      try {
+        // Prépare les options de la requête
+        const options = {
+          method: method,
+          headers: { ...extraHeaders }
+        };
+
+        // Ajoute le body si nécessaire (pas pour GET/DELETE)
+        if (body && method !== 'GET' && method !== 'DELETE') {
+          options.body = body;
+          if (!options.headers['Content-Type']) {
+            options.headers['Content-Type'] = 'application/json';
+          }
+        }
+
+        // Envoie la requête
+        const reponse = await fetch(url, options);
+        const texte   = await reponse.text();
+
+        // Essaie de formater en JSON si possible
+        let affichage = texte;
+        try {
+          affichage = JSON.stringify(JSON.parse(texte), null, 2);
+        } catch (e) { /* pas du JSON, on garde le texte brut */ }
+
+        // Affiche la réponse
+        document.getElementById('response-area-empty').style.display = 'none';
+        document.getElementById('response-section').style.display = 'flex';
+
+        // Statut
+        const statusEl = document.getElementById('status-line');
+        statusEl.textContent = `Statut : ${reponse.status} ${reponse.statusText}`;
+        statusEl.className = reponse.ok ? 'status-ok' : 'status-err';
+
+        // Headers de la réponse
+        let headersTexte = '';
+        reponse.headers.forEach((valeur, cle) => {
+          headersTexte += `${cle}: ${valeur}\n`;
+        });
+        document.getElementById('headers-area').textContent = headersTexte || '(aucun)';
+
+        // Body de la réponse
+        const refTitle = document.getElementById('response-body-title');
+        const refArea = document.getElementById('response-area');
+        
+        if (affichage) {
+          refTitle.style.display = 'block';
+          refArea.style.display = 'block';
+          refArea.textContent = affichage;
+        } else {
+          refTitle.style.display = 'none';
+          refArea.style.display = 'none';
+          refArea.textContent = '';
+        }
+
+      } catch (erreur) {
+        // En cas d'erreur réseau
+        document.getElementById('response-area-empty').style.display = 'none';
+        document.getElementById('response-section').style.display = 'flex';
+
+        const statusEl = document.getElementById('status-line');
+        statusEl.textContent = 'Erreur réseau : ' + erreur.message;
+        statusEl.className = 'status-err';
+
+        document.getElementById('headers-area').textContent = '';
+        
+        const refTitle = document.getElementById('response-body-title');
+        const refArea = document.getElementById('response-area');
+        if (refTitle) refTitle.style.display = 'block';
+        if (refArea) {
+          refArea.style.display = 'block';
+          refArea.textContent = String(erreur);
+        }
+      }
+
+      btn.textContent = 'Envoyer';
+      btn.disabled = false;
+    }
+  </script>
+
+</body>
+</html>
